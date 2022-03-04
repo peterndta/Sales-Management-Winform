@@ -3,7 +3,7 @@
 ### About this project:
 * Use the Visual Studio.NET to create Windows Forms and Class Library (.dll) projects
 * Develop MDI (Multiple Document Interface) application using WinForms
-* Perform CRUD actions using ADO.NET and Entity Framework Core
+* Perform CRUD actions using ADO.NET
 * Use LINQ to query and sort data
 * Apply passing data in WinForms application
 * Apply 3-layers architecture to develop an application
