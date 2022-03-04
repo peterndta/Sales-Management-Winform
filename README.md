@@ -1,6 +1,6 @@
 # Welcome to Sales Management with Winform
 ## This is a small project help with member management, product management, and order management. 
-### This project using:
+### About this project:
 * Use the Visual Studio.NET to create Windows Forms and Class Library (.dll) projects
 * Develop MDI (Multiple Document Interface) application using WinForms
 * Perform CRUD actions using ADO.NET and Entity Framework Core
