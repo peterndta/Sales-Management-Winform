@@ -14,7 +14,6 @@ namespace SalesWinApp
         public MemberObject MemberInfo { get; set; }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            btnReport.Enabled = MemberOrAdmin;
             btnProducts.Enabled = MemberOrAdmin;
         }
         //---------------------------------------------------------
@@ -68,11 +67,7 @@ namespace SalesWinApp
 
         }
         //---------------------------------------------------------
-        private void btnReport_Click(object sender, EventArgs e)
-        {
 
-        }
-        //---------------------------------------------------------
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

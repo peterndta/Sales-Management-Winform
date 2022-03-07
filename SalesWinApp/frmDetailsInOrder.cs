@@ -123,10 +123,13 @@ namespace SalesWinApp
         {
             try
             {
-                OrderDetailObject order = GetDetailObject();
-                OrderDetailRepository.DeleteOrderDetail(OrderInfo.OrderID, order.ProductID);
-                LoadOrderDetailList();
-
+                DialogResult alert = MessageBox.Show("Are you sure?", "Delete detail", MessageBoxButtons.OKCancel);
+                if (alert == DialogResult.OK)
+                {
+                    OrderDetailObject order = GetDetailObject();
+                    OrderDetailRepository.DeleteOrderDetail(OrderInfo.OrderID, order.ProductID);
+                    LoadOrderDetailList();
+                }
             }
             catch (Exception ex)
             {

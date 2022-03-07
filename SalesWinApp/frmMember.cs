@@ -150,9 +150,13 @@ namespace SalesWinApp
         {
             try
             {
-                MemberObject member = GetMemberObject();
-                MemberRepository.DeleteMember(member.MemberID);
-                LoadMemberList();
+                DialogResult alert = MessageBox.Show("Are you sure?", "Delete member", MessageBoxButtons.OKCancel);
+                if (alert == DialogResult.OK)
+                {
+                    MemberObject member = GetMemberObject();
+                    MemberRepository.DeleteMember(member.MemberID);
+                    LoadMemberList();
+                }
                
             }
             catch (Exception ex)
@@ -177,6 +181,18 @@ namespace SalesWinApp
                 source.Position = source.Count - 1;
             }
         }
+
+        private void dgvMemberList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            if (e.ColumnIndex == 3 && e.Value != null)
+            {
+                e.Value = new string('*', e.Value.ToString().Length);
+                   
+            }
+            
+        }
+
         //---------------------------------------------------------
     }
 }

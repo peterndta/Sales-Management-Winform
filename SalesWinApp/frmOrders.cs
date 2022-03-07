@@ -124,9 +124,13 @@ namespace SalesWinApp
 
             try
             {
-                OrderObject order = GetOrderObject();
-                OrderRepository.DeleteOrder(order.OrderID);
-                LoadOrderList();
+                DialogResult alert = MessageBox.Show("Are you sure?", "Delete order", MessageBoxButtons.OKCancel);
+                if (alert == DialogResult.OK)
+                {
+                    OrderObject order = GetOrderObject();
+                    OrderRepository.DeleteOrder(order.OrderID);
+                    LoadOrderList();
+                }         
 
             }
             catch (Exception ex)

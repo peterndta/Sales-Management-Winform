@@ -7,13 +7,11 @@ namespace DataAccess.Repository
     {
         void IProductRepository.DeleteProduct(int productID) => ProductDAO.Instance.Remove(productID);
 
-        ProductObject IProductRepository.GetProductByID(int productID) => ProductDAO.Instance.GetProductByID(productID);
+        IEnumerable<ProductObject> IProductRepository.GetProductByID(int productID) => ProductDAO.Instance.GetProductsByID(productID);
 
-        ProductObject IProductRepository.GetProductByName(string productName) => ProductDAO.Instance.GetProductByName(productName);
+        IEnumerable<ProductObject> IProductRepository.GetProductByUnitPrice(int unitPrice) => ProductDAO.Instance.GetProductByUnitPrice(unitPrice);
 
-        ProductObject IProductRepository.GetProductByUnitPrice(int unitPrice) => ProductDAO.Instance.GetProductByUnitPrice(unitPrice);
-
-        ProductObject IProductRepository.GetProductByUnitInStock(int unitInStock) => ProductDAO.Instance.GetProductByUnitInStock(unitInStock);
+        IEnumerable<ProductObject> IProductRepository.GetProductByUnitInStock(int unitInStock) => ProductDAO.Instance.GetProductByUnitInStock(unitInStock);
 
         IEnumerable<ProductObject> IProductRepository.GetProducts() => ProductDAO.Instance.GetProductList();
 

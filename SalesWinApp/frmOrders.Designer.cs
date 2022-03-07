@@ -179,6 +179,7 @@
             // 
             this.dgvOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderList.Location = new System.Drawing.Point(27, 237);
+            this.dgvOrderList.MultiSelect = false;
             this.dgvOrderList.Name = "dgvOrderList";
             this.dgvOrderList.ReadOnly = true;
             this.dgvOrderList.RowTemplate.Height = 25;

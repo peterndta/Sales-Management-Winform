@@ -6,13 +6,11 @@ namespace DataAccess.Repository
     public interface IProductRepository
     {
         IEnumerable<ProductObject> GetProducts();
-        ProductObject GetProductByID(int productID);
+        IEnumerable<ProductObject> GetProductByID(int productID);
 
-        ProductObject GetProductByName(string productName);
+        IEnumerable<ProductObject> GetProductByUnitPrice(int unitPrice);
 
-        ProductObject GetProductByUnitPrice(int unitPrice);
-
-        ProductObject GetProductByUnitInStock(int unitInStock);
+        IEnumerable<ProductObject> GetProductByUnitInStock(int unitInStock);
 
         void InsertProduct(ProductObject product);
 

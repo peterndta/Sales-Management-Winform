@@ -3,9 +3,6 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -64,6 +61,39 @@ namespace DataAccess
             return products;
         }
         //---------------------------------------------------------
+        public List<ProductObject> GetProductsByID(int productID)
+        {
+            IDataReader dataReader = null;
+            string SQLSelect = "Select ProductId, CategoryId, ProductName, Weight, UnitPrice, UnitslnStock from Product where ProductId = @ProductId";
+            var products = new List<ProductObject>();
+            try
+            {
+                var param = DataProvider.CreateParameter("@ProductId", 4, productID, DbType.Int32);
+                dataReader = DataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
+                while (dataReader.Read())
+                {
+                    products.Add(new ProductObject
+                    {
+                        ProductID = dataReader.GetInt32(0),
+                        CategoryID = dataReader.GetInt32(1),
+                        ProductName = dataReader.GetString(2),
+                        Weight = dataReader.GetString(3),
+                        UnitPrice = dataReader.GetDecimal(4),
+                        UnitsInStock = dataReader.GetInt32(5),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                dataReader.Close();
+                CloseConnection();
+            }
+            return products;
+        }
         public ProductObject GetProductByID(int productID)
         {
             ProductObject product = null;
@@ -97,51 +127,20 @@ namespace DataAccess
             }
             return product;
         }
-        public ProductObject GetProductByName(string productName)
+        //---------------------------------------------------------
+        public List<ProductObject> GetProductByUnitPrice(int unitPrice)
         {
-            ProductObject product = null;
-            IDataReader dataReader = null;
-            string SQLSelect = "Select ProductId, CategoryId, ProductName, Weight, UnitPrice, UnitslnStock from Product where ProductName = @ProductName";
-            try
-            {
-                var param = DataProvider.CreateParameter("@ProductName", 50, productName, DbType.String);
-                dataReader = DataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
-                if (dataReader.Read())
-                {
-                    product = new ProductObject
-                    {
-                        ProductID = dataReader.GetInt32(0),
-                        CategoryID = dataReader.GetInt32(1),
-                        ProductName = dataReader.GetString(2),
-                        Weight = dataReader.GetString(3),
-                        UnitPrice = dataReader.GetDecimal(4),
-                        UnitsInStock = dataReader.GetInt32(5),
-                    };
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                dataReader.Close();
-                CloseConnection();
-            }
-            return product;
-        }
-        public ProductObject GetProductByUnitPrice(int unitPrice)
-        {
-            ProductObject product = null;
             IDataReader dataReader = null;
             string SQLSelect = "Select ProductId, CategoryId, ProductName, Weight, UnitPrice, UnitslnStock from Product where UnitPrice = @UnitPrice";
+
+            var products = new List<ProductObject>();
             try
             {
                 var param = DataProvider.CreateParameter("@UnitPrice", 50, unitPrice, DbType.Decimal);
                 dataReader = DataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
-                if (dataReader.Read())
+                while (dataReader.Read())
                 {
-                    product = new ProductObject
+                    products.Add(new ProductObject
                     {
                         ProductID = dataReader.GetInt32(0),
                         CategoryID = dataReader.GetInt32(1),
@@ -149,7 +148,7 @@ namespace DataAccess
                         Weight = dataReader.GetString(3),
                         UnitPrice = dataReader.GetDecimal(4),
                         UnitsInStock = dataReader.GetInt32(5),
-                    };
+                    });
                 }
             }
             catch (Exception ex)
@@ -161,20 +160,21 @@ namespace DataAccess
                 dataReader.Close();
                 CloseConnection();
             }
-            return product;
+            return products;
         }
-        public ProductObject GetProductByUnitInStock(int unitInStock)
+        //---------------------------------------------------------
+        public List<ProductObject> GetProductByUnitInStock(int unitInStock)
         {
-            ProductObject product = null;
             IDataReader dataReader = null;
             string SQLSelect = "Select ProductId, CategoryId, ProductName, Weight, UnitPrice, UnitslnStock from Product where UnitslnStock = @UnitslnStock";
+            var products = new List<ProductObject>();
             try
             {
                 var param = DataProvider.CreateParameter("@UnitslnStock", 4, unitInStock, DbType.Int32);
                 dataReader = DataProvider.GetDataReader(SQLSelect, CommandType.Text, out connection, param);
-                if (dataReader.Read())
+                while (dataReader.Read())
                 {
-                    product = new ProductObject
+                    products.Add(new ProductObject
                     {
                         ProductID = dataReader.GetInt32(0),
                         CategoryID = dataReader.GetInt32(1),
@@ -182,7 +182,7 @@ namespace DataAccess
                         Weight = dataReader.GetString(3),
                         UnitPrice = dataReader.GetDecimal(4),
                         UnitsInStock = dataReader.GetInt32(5),
-                    };
+                    });
                 }
             }
             catch (Exception ex)
@@ -194,7 +194,7 @@ namespace DataAccess
                 dataReader.Close();
                 CloseConnection();
             }
-            return product;
+            return products;
         }
         //---------------------------------------------------------
         public void AddNew(ProductObject product)

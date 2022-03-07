@@ -30,15 +30,24 @@ namespace SalesWinApp
                     Freight = Decimal.Parse(txtFreight.Text),
 
                 };
-                if (InsertOrUpdate == false)
+                if (txtOrderID.Text.Trim() == string.Empty || txtMemberID.Text.Trim() == string.Empty ||
+                    dtpOrderDate.Text.Trim() == string.Empty || txtFreight.Text.Trim() == string.Empty)
                 {
-                    OrderRepository.InsertOrder(Order);
-                    MessageBox.Show("Add Success!");
+                    MessageBox.Show("Your field is Empty", InsertOrUpdate == false ? "Add a new Order" : "Update a Order");
+                    DialogResult = DialogResult.None;
                 }
                 else
                 {
-                    OrderRepository.UpdateOrder(Order);
-                    MessageBox.Show("Update Success!");
+                    if (InsertOrUpdate == false)
+                    {
+                        OrderRepository.InsertOrder(Order);
+                        MessageBox.Show("Add Success!");
+                    }
+                    else
+                    {
+                        OrderRepository.UpdateOrder(Order);
+                        MessageBox.Show("Update Success!");
+                    }
                 }
             }
             catch (Exception ex)

@@ -36,15 +36,25 @@ namespace SalesWinApp
 
 
                 };
-                if (InsertOrUpdate == false)
+                if (txtOrderID.Text.Trim() == string.Empty || txtProductID.Text.Trim() == string.Empty ||
+                    txtUnitPrice.Text.Trim() == string.Empty || txtQuantity.Text.Trim() == string.Empty ||
+                    txtDiscount.Text.Trim() == string.Empty)
                 {
-                    OrderDetailRepository.InsertOrderDetail(Detail);
-                    MessageBox.Show("Add Success!");
+                    MessageBox.Show("Your field is Empty", InsertOrUpdate == false ? "Add a new Detail" : "Update a Detail");
+                    DialogResult = DialogResult.None;
                 }
                 else
                 {
-                    OrderDetailRepository.UpdateOrderDetail(Detail);
-                    MessageBox.Show("Update Success!");
+                    if (InsertOrUpdate == false)
+                    {
+                        OrderDetailRepository.InsertOrderDetail(Detail);
+                        MessageBox.Show("Add Success!");
+                    }
+                    else
+                    {
+                        OrderDetailRepository.UpdateOrderDetail(Detail);
+                        MessageBox.Show("Update Success!");
+                    }
                 }
             }
             catch (Exception ex)

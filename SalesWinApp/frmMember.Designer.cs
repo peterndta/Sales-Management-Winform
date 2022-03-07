@@ -152,6 +152,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(427, 83);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(171, 23);
             this.txtPassword.TabIndex = 10;
             // 
@@ -196,6 +197,7 @@
             // 
             this.dgvMemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMemberList.Location = new System.Drawing.Point(21, 237);
+            this.dgvMemberList.MultiSelect = false;
             this.dgvMemberList.Name = "dgvMemberList";
             this.dgvMemberList.ReadOnly = true;
             this.dgvMemberList.RowTemplate.Height = 25;
@@ -203,6 +205,7 @@
             this.dgvMemberList.Size = new System.Drawing.Size(577, 195);
             this.dgvMemberList.TabIndex = 17;
             this.dgvMemberList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMemberList_CellDoubleClick);
+            this.dgvMemberList.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvMemberList_CellFormatting);
             // 
             // btnDelete
             // 

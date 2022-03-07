@@ -1908,11 +1908,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\SalesWinApp\\SalesWinApp.csproj",
+      "projectUniqueName": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\SalesWinApp\\SalesWinApp.csproj",
       "projectName": "SalesWinApp",
-      "projectPath": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\SalesWinApp\\SalesWinApp.csproj",
+      "projectPath": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\SalesWinApp\\SalesWinApp.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\SalesWinApp\\obj\\",
+      "outputPath": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\SalesWinApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1929,8 +1929,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\DataAccess\\DataAccess.csproj"
+            "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\DataAccess\\DataAccess.csproj"
             }
           }
         }

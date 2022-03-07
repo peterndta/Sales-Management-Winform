@@ -42,15 +42,26 @@ namespace SalesWinApp
                     Country = txtCountry.Text,
 
                 };
-                if (InsertOrUpdate == false)
+                if (txtMemberID.Text.Trim() == string.Empty || txtCompanyName.Text.Trim() == string.Empty ||
+                    txtEmail.Text.Trim() == string.Empty || txtPassword.Text.Trim() == string.Empty ||
+                    txtCity.Text.Trim() == string.Empty || txtCountry.Text.Trim() == string.Empty)
                 {
-                    MemberRepository.InsertMember(member);
-                    MessageBox.Show("Add Success!");
+                    MessageBox.Show("Your field is Empty", InsertOrUpdate == false ? "Add a new member" : "Update a member");
+                    DialogResult = DialogResult.None;
                 }
                 else
                 {
-                    MemberRepository.UpdateMember(member);
-                    MessageBox.Show("Update Success!");
+                    if (InsertOrUpdate == false)
+                    {
+                        MemberRepository.InsertMember(member);
+                        MessageBox.Show("Add Success!");
+                    }
+                    else
+                    {
+                        MemberRepository.UpdateMember(member);
+                        MessageBox.Show("Update Success!");
+
+                    }
                 }
             }
             catch (Exception ex)

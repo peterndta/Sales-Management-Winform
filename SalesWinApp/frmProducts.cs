@@ -11,6 +11,7 @@ namespace SalesWinApp
     {
         public IProductRepository ProductRepository = new ProductRepository();
         BindingSource source;
+        private IEnumerable<ProductObject> ProductList;
         public frmProducts()
         {
             InitializeComponent();
@@ -117,10 +118,13 @@ namespace SalesWinApp
         {
             try
             {
-                ProductObject product = GetProductObject();
-                ProductRepository.DeleteProduct(product.ProductID);
-                LoadProductList();
-
+                DialogResult alert = MessageBox.Show("Are you sure?", "Delete product", MessageBoxButtons.OKCancel);
+                if(alert == DialogResult.OK)
+                {
+                    ProductObject product = GetProductObject();
+                    ProductRepository.DeleteProduct(product.ProductID);
+                    LoadProductList();
+                }             
             }
             catch (Exception ex)
             {
@@ -160,33 +164,32 @@ namespace SalesWinApp
         {
             try
             {
-                ProductObject product = null;
+                
                 if (comboType.Text == "ID")
                 {
                     int productID = int.Parse(txtSearch.Text);
-                    product = ProductRepository.GetProductByID(productID);
+                    ProductList = ProductRepository.GetProductByID(productID);
                 }
                 else if(comboType.Text == "Name")
                 {
                     string productName = txtSearch.Text;
-                    product = ProductRepository.GetProductByName(productName);
+                    ProductList = ProductRepository.GetProducts().Where(s=>s.ProductName.Contains(productName));
                 }
                 else if (comboType.Text == "UnitPrice")
                 {
                     string unitPrice = txtSearch.Text;
-                    product = ProductRepository.GetProductByUnitPrice(int.Parse(unitPrice));
+                    ProductList = ProductRepository.GetProductByUnitPrice(int.Parse(unitPrice));
                 }
                 else if (comboType.Text == "UnitInStock")
                 {
                     string unitInStock = txtSearch.Text;
-                    product = ProductRepository.GetProductByUnitInStock(int.Parse(unitInStock));
+                    ProductList = ProductRepository.GetProductByUnitInStock(int.Parse(unitInStock));
                 }
 
-
-                if (product != null)
+                if (ProductList != null)
                 {
                     source = new BindingSource();
-                    source.DataSource = product;
+                    source.DataSource = ProductList;
 
                     txtProductID.DataBindings.Clear();
                     txtProductName.DataBindings.Clear();
@@ -212,12 +215,12 @@ namespace SalesWinApp
                 {
                     ClearText();
                     btnDelete.Enabled = false;
-                    MessageBox.Show("This product does not exist!");
+                    MessageBox.Show("This product does not exist!", "Search product");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Search product");
+                MessageBox.Show("This product does not exist!", "Search product");
             }
         }
         //---------------------------------------------------------

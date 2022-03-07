@@ -136,6 +136,7 @@
             // 
             this.dgvDetailList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetailList.Location = new System.Drawing.Point(34, 196);
+            this.dgvDetailList.MultiSelect = false;
             this.dgvDetailList.Name = "dgvDetailList";
             this.dgvDetailList.ReadOnly = true;
             this.dgvDetailList.RowTemplate.Height = 25;

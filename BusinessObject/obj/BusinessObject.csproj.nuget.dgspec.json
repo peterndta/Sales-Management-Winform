@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\BusinessObject\\BusinessObject.csproj": {}
+    "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\BusinessObject\\BusinessObject.csproj": {}
   },
   "projects": {
-    "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\BusinessObject\\BusinessObject.csproj": {
+    "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\BusinessObject\\BusinessObject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\BusinessObject\\BusinessObject.csproj",
+        "projectUniqueName": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\BusinessObject\\BusinessObject.csproj",
         "projectName": "BusinessObject",
-        "projectPath": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\BusinessObject\\BusinessObject.csproj",
+        "projectPath": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\BusinessObject\\BusinessObject.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Works\\CN5\\PRN211\\Ass02Solution_SE1505_NguyenDangTruongAnh\\BusinessObject\\obj\\",
+        "outputPath": "E:\\Works\\CN5\\PRN211\\Sales-Management-Winform\\BusinessObject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

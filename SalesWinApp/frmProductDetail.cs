@@ -42,15 +42,25 @@ namespace SalesWinApp
                     UnitsInStock = int.Parse(txtUnitInStock.Text),
 
                 };
-                if (InsertOrUpdate == false)
+                if (txtProductID.Text.Trim() == string.Empty || txtProductName.Text.Trim() == string.Empty ||
+                    txtCategoryID.Text.Trim() == string.Empty || txtWeight.Text.Trim() == string.Empty ||
+                    txtUnitPrice.Text.Trim() == string.Empty || txtUnitInStock.Text.Trim() == string.Empty)
                 {
-                    ProductRepository.InsertProduct(Product);
-                    MessageBox.Show("Add Success!");
+                    MessageBox.Show("Your field is Empty", InsertOrUpdate == false ? "Add a new Product" : "Update a Product");
+                    DialogResult = DialogResult.None;
                 }
                 else
                 {
-                    ProductRepository.UpdateProduct(Product);
-                    MessageBox.Show("Update Success!");
+                    if (InsertOrUpdate == false)
+                    {
+                        ProductRepository.InsertProduct(Product);
+                        MessageBox.Show("Add Success!");
+                    }
+                    else
+                    {
+                        ProductRepository.UpdateProduct(Product);
+                        MessageBox.Show("Update Success!");
+                    }
                 }
             }
             catch (Exception ex)
